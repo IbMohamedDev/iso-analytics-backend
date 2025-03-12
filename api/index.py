@@ -27,7 +27,7 @@ def about():
 
 
 
-@app.route('/')
+
 @app.route('/players', methods=["GET"])
 def get_players_data():
     
@@ -136,25 +136,25 @@ def fetch_shot_data(player_id):
 
 
 # API endpoint to fetch multiple player images
-@app.route('/players/imgs', methods=['GET'])
-def fetch_nba_imgs():
+# @app.route('/players/imgs', methods=['GET'])
+# def fetch_nba_imgs():
    
-    try:
-        player_names = request.args.getlist('players')  # Get list of player names from query params
-        input_string = player_names[0]
-        player_names_list = input_string.split(',')
-        print(player_names_list)
-        if not player_names_list:
-            return jsonify({"error": "No player names provided"}), 400
+#     try:
+#         player_names = request.args.getlist('players')  # Get list of player names from query params
+#         input_string = player_names[0]
+#         player_names_list = input_string.split(',')
+#         print(player_names_list)
+#         if not player_names_list:
+#             return jsonify({"error": "No player names provided"}), 400
 
-        images = {}
-        for name in player_names_list:
-            nba_id = fetch_nba_api(name)
-            images[name] = f"https://cdn.nba.com/headshots/nba/latest/1040x760/{nba_id}.png" if nba_id else None
+#         images = {}
+#         for name in player_names_list:
+#             nba_id = fetch_nba_api(name)
+#             images[name] = f"https://cdn.nba.com/headshots/nba/latest/1040x760/{nba_id}.png" if nba_id else None
 
-        return jsonify(images)
-    except Exception as e:
-        print("Error:", e)
+#         return jsonify(images)
+#     except Exception as e:
+#         print("Error:", e)
         return jsonify({"error": str(e)}), 500
     
 
