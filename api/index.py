@@ -44,7 +44,6 @@ def get_players_data():
             query = query.ilike("team", f"%{team_filter}%")
         if position_filter:
             query = query.ilike("position", f"%{position_filter}%")
-        query.ilike('to',  "2025.0%")
         
         response = query.execute()
 
